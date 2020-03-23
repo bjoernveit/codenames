@@ -1,7 +1,7 @@
 <template>
   <div class="card-area container-fluid">
-    <div class="row">
-      <card v-for="card in cards" :key="card.word" v-bind:card="card"></card>
+    <div class="row" v-for="row in rows" :key="row">
+      <card v-for="card in row" :key="card.word" v-bind:card="card"></card>
     </div>
   </div>
 </template>
@@ -18,6 +18,15 @@ export default {
         return {
             text:"CardArea"
         }
+    },
+    computed: {
+      rows: function() {
+        var rows = [];
+        for(let i = 0; i < this.cards.length; i += 5){
+          rows.push(this.cards.slice(i, i + 5));
+        }
+        return rows
+      }
     }
 }
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  Hello World, lets play some codenames!
-  <main-board v-bind:cards="cards"></main-board>
+  <main-board v-bind:cards="cards" v-bind:info="info" v-bind:score="score" v-bind:time="time"></main-board>
   <side-board v-bind:hints-red="hints.red" v-bind:hints-blue="hints.blue"></side-board>
   </div>
 </template>
@@ -38,11 +36,40 @@ export default {
         {word: "Agent", type: "BLUE_AGENT", state: "REVEALED"},
         {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
         {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
-        {word: "Assassin", type: "ASSASSIN", state: "UNKNOWN"},
-        {word: "Assassin", type: "ASSASSIN", state: "REVEALED"},
         {word: "Civilist", type: "CIVILIST", state: "UNKNOWN"},
         {word: "Civilist", type: "CIVILIST", state: "REVEALED"},
-      ]
+        {word: "Assassin", type: "ASSASSIN", state: "UNKNOWN"},
+        {word: "Assassin", type: "ASSASSIN", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
+        {word: "Civilist", type: "CIVILIST", state: "UNKNOWN"},
+        {word: "Agent", type: "RED_AGENT", state: "REVEALED"},
+        {word: "Agent", type: "RED_AGENT", state: "UNKNOWN"},
+      ],
+      info: {label: "Hint:", text: "Vue Rocks 9"},
+      score: {
+        red: {
+          found: 5,
+          total: 7
+        },
+        blue: {
+          found: 3,
+          total: 8
+        }
+      },
+      time: "0:35"
     }
   }
 }

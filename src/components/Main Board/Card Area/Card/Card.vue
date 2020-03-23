@@ -1,5 +1,5 @@
 <template>
-  <div class="col-2">
+  <div class="col">
     <div v-bind:class="compClasses">
       {{ card.word }}
     </div>
@@ -41,11 +41,9 @@
   box-shadow 0px 4px 4px rgba(0, 0, 0, 0.25)
   font-style normal
   font-weight bold
-  font-size 30px
-  line-height 40px
+  font-size 24px
   align-items center
   text-align center
-  text-decoration-line underline
   color #000000
   border-radius 20px
   &--blue
