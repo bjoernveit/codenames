@@ -76,4 +76,5 @@ export default {
 </script>
 
 <style lang="stylus">
+@require './styles/index'
 </style>

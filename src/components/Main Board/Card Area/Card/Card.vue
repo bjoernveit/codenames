@@ -1,7 +1,7 @@
 <template>
   <div class="col">
     <div v-bind:class="compClasses">
-      {{ card.word }}
+      <span class="agent-card__word">{{ card.word }}</span>
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@
     }
 </script>
 <style lang="stylus">
+@require './../../../../styles/index'
 .agent-card
   padding 20px
   margin 5px
@@ -46,14 +47,18 @@
   text-align center
   color #000000
   border-radius 20px
+  &--revealed 
+    & > span
+      opacity 0
+    &:hover > span
+      opacity 1
   &--blue
-    color blue
+    background $color__blue--opacity-medium
   &--red
-    color red
+    background $color__red--opacity-medium
   &--yellow
-    color orange 
+    background $color__yellow--opacity-medium
   &--black
-    color grey
-  &__word
-    margin auto
+    background $color__black
+    color $color__grey
 </style>
