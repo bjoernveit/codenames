@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <div v-bind:class="compClasses">
+    <div v-bind:class="compClasses" v-on:click="reveal">
       <span class="agent-card__word">{{ card.word }}</span>
     </div>
   </div>
@@ -26,6 +26,12 @@
               "agent-card--yellow": this.isRevealed & this.card.type === "CIVILIST",
               "agent-card--black": this.isRevealed & this.card.type === "ASSASSIN",
             }
+          }
+        },
+        methods: {
+          reveal: function(){
+            console.log("revealing card  " + this.card.word)
+            this.card.state = "REVEALED"
           }
         },
     }
