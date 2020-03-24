@@ -32,7 +32,8 @@ export default {
 </script>
 
 <style lang="stylus">
-.card-area .col-2
-  margin 0
-  padding 0
+.card-area 
+  & .col
+    margin 5px
+    padding 0
 </style>
