@@ -2,20 +2,20 @@
   <div class="game-info-area container-fluid ">
     <div class="row">
       <score v-bind:score="score"></score>
-      <info label="Time:" v-bind:text="time"></info>
-      <info v-bind:label="info.label" v-bind:text="info.text"></info>
+      <!-- <info label="Time:" v-bind:text="time"></info> -->
+      <!-- <info v-bind:label="info.label" v-bind:text="info.text"></info> -->
     </div>
   </div>
 </template>
 
 <script>
 import Score from './Score/Score.vue'
-import Info from './Info/Info.vue'
+// import Info from './Info/Info.vue'
 export default {
-  props:["score", "time", "info"],
+  props:["score", "time", "info", "view"],
   components: {
     'score': Score,
-    'info' : Info
+    // 'info' : Info
   },
   data() {
     return {}
@@ -35,5 +35,5 @@ export default {
   font-size 30px
   font-weight bold
   &__label
-    font-size 24px
+    font-size 30px
 </style>

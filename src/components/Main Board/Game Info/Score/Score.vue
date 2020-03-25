@@ -11,18 +11,19 @@
         props:["score"],
         data() {
             return {
-                label:"Known Agents:"
+                label:"Agents:"
             }
         }
     }
 </script>
 
 <style lang="stylus">
+@require '../../../../styles/index'
 .score
   &__points
-    margin 5px
+    margin-left 12px
     &--red
-      color red
+      color $color__red
     &--blue
-      color blue
+      color $color__blue
 </style>

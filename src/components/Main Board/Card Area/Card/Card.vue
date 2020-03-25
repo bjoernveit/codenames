@@ -7,34 +7,41 @@
 </template>
 
 <script>
-    export default {
-      props: ['card'],
-      data() {
-            return {
-            }
-        },
-        computed: {
-          isRevealed: function(){
-            return (this.card.state === "REVEALED")
-          },
-          compClasses: function(){
-            return {
-              "agent-card": true,
-              "agent-card--revealed": this.isRevealed,
-              "agent-card--blue": this.isRevealed & this.card.type === "BLUE_AGENT",
-              "agent-card--red": this.isRevealed & this.card.type === "RED_AGENT",
-              "agent-card--yellow": this.isRevealed & this.card.type === "CIVILIST",
-              "agent-card--black": this.isRevealed & this.card.type === "ASSASSIN",
-            }
-          }
-        },
-        methods: {
-          reveal: function(){
-            console.log("revealing card  " + this.card.word)
-            this.card.state = "REVEALED"
-          }
-        },
-    }
+import { cardsRef } from '../../../../firebase'
+export default {
+props: ['card', 'view'],
+  data() {
+        return {
+        }
+    },
+    computed: {
+      isRevealed: function(){
+        return (this.card.state === "REVEALED");
+      },
+      isMasterView: function(){
+        return (this.view === "MASTER");
+      },
+      showColor: function(){
+        return (this.isMasterView || this.isRevealed);
+      },
+      compClasses: function(){
+        return {
+          "agent-card": true,
+          "agent-card--master-view": this.isMasterView,
+          "agent-card--revealed": this.isRevealed,
+          "agent-card--blue": this.showColor & this.card.type === "BLUE_AGENT",
+          "agent-card--red": this.showColor & this.card.type === "RED_AGENT",
+          "agent-card--yellow": this.showColor & this.card.type === "CIVILIST",
+          "agent-card--black": this.showColor & this.card.type === "ASSASSIN",
+        }
+      }
+    },
+    methods: {
+      reveal: function(){
+        cardsRef.child(this.card['.key']).update({state: "REVEALED"});
+      }
+  },
+}
 </script>
 <style lang="stylus">
 @require './../../../../styles/index'
@@ -58,13 +65,23 @@
       opacity 0
     &:hover > span
       opacity 1
-  &--blue
-    background $color__blue--opacity-medium
-  &--red
-    background $color__red--opacity-medium
-  &--yellow
-    background $color__yellow--opacity-medium
-  &--black
-    background $color__black
-    color $color__grey
+    &.agent-card--blue
+      background $color__blue--opacity-medium
+    &.agent-card--red
+      background $color__red--opacity-medium
+    &.agent-card--yellow
+      background $color__yellow--opacity-medium
+    &.agent-card--black
+      background $color__black
+      color $color__grey
+  &--master-view
+    &.agent-card--blue
+      border 3px solid $color__blue
+      color $color__blue
+    &.agent-card--red
+      border 3px solid $color__red
+      color $color__red
+    &.agent-card--black
+      background $color__black
+      color $color__grey
 </style>

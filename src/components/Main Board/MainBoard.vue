@@ -1,7 +1,7 @@
 <template>
   <div class="main-board">
-    <game-info v-bind:score="score" v-bind:info="info" v-bind:time="time"></game-info>
-    <card-area v-bind:cards="cards"></card-area>
+    <game-info v-bind:score="score" v-bind:info="info" v-bind:time="time" v-bind:view="view">></game-info>
+    <card-area v-bind:cards="cards" v-bind:view="view">></card-area>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import CardArea from './Card Area/CardArea.vue'
 import GameInfo from './Game Info/GameInfo.vue'
 export default {
-  props: ["cards", "score", "time", "info"],
+  props: ["cards", "score", "time", "info", "view"],
   components:{
     'card-area': CardArea,
     'game-info': GameInfo

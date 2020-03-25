@@ -1,7 +1,7 @@
 <template>
   <div class="card-area container-fluid">
     <div class="row" v-for="row in rows" :key="row">
-      <card v-for="card in row" :key="card.word" v-bind:card="card"></card>
+      <card v-for="card in row" :key="card.word" v-bind:card="card" v-bind:view="view">></card>
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import Card from './Card/Card.vue'
 
 export default {
-    props: ["cards"],
+    props: ["cards", "view"],
     components: {
         'card': Card
     },
